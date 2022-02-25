@@ -229,14 +229,6 @@ async def initiate_bot():
     console.print(f"\n[red]Stopping Bot")
 
 
-home_text_pm = f"""✨ **Welcome {message.from_user.mention()} !**\n
-💭 **[{BOT_NAME}](https://t.me/{BOT_USERNAME}) allows you to play music on groups through the new Telegram's voice chats!**
-
-💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
-
-🔖 **To know how to use this bot, please click on the » ❓ Basic Guide button!**"""
-
-
 @app.on_message(filters.command("help") & filters.private)
 async def help_command(_, message):
     text, keyboard = await help_parser(message.from_user.mention)
@@ -356,7 +348,12 @@ async def start_command(_, message):
             return
     out = private_panel()
     await message.reply_text(
-        home_text_pm,
+        f"""✨ **Welcome {message.from_user.mention()} !**\n
+💭 **[PRINCE MUSIC](https://t.me/PRINCEXMUSICBOT) allows you to play music on groups through the new Telegram's voice chats!**
+
+💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
+
+🔖 **To know how to use this bot, please click on the » ❓ Basic Guide button!**""",
         reply_markup=InlineKeyboardMarkup(out[1]),
     )
     if await is_on_off(5):
