@@ -27,18 +27,10 @@ __HELP__ = """
 """
 
 
-@app.on_message(
-    filters.text
-)
-@PermissionCheck
+@app.on_message(filters.text)
 async def play(_, message: Message):
     if message.chat.type == "private":
         pass
-    else:
-        if message.sender_chat:
-            return await message.reply_text(
-                "You're an __Anonymous Admin__ in this Chat Group!\nRevert back to User Account From Admin Rights."
-            )
     try:
         await message.delete()
     except:
